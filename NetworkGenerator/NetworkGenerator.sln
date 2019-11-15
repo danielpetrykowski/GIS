@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkGenerator", "NetworkGenerator\NetworkGenerator.csproj", "{7A75D3F0-C0BE-4368-9251-8C6CE132134C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A75D3F0-C0BE-4368-9251-8C6CE132134C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A75D3F0-C0BE-4368-9251-8C6CE132134C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A75D3F0-C0BE-4368-9251-8C6CE132134C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A75D3F0-C0BE-4368-9251-8C6CE132134C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AC1867CE-4CF1-4CED-8715-79665CB35F51}
+	EndGlobalSection
+EndGlobal
