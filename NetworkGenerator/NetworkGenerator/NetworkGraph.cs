@@ -47,6 +47,7 @@ namespace NetworkGenerator
                     Matrix.SetValue(row, col, random.Next(minValue, maxValue));
                 }
             }
+            Matrix.RemoveDuplicateEdge();
             Source = random.Next(1, Vertical);
             Target = random.Next(1, Vertical);
         }
