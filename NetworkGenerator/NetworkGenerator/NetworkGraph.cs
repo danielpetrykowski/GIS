@@ -63,7 +63,8 @@ namespace NetworkGenerator
                 for (int c = 0; c < Matrix.col; c++)
                 {
                     stringBuilder.Append(Matrix.GetValue(r, c));
-                    stringBuilder.Append(";");
+                    if(c!= (Matrix.col - 1))
+                        stringBuilder.Append(";");
                 }
                 stringBuilder.AppendLine();
             }

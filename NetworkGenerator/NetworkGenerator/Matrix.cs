@@ -39,22 +39,15 @@ namespace NetworkGenerator
         {
             for (int r = 0; r < row; r++)
             {
-                for (int c = 0; c < col; c++)
+                for (int c = r + 1; c < col; c++)
                 {
                     var rowToCol = matrix[r, c];
                     var colToRow = matrix[c, r];
-                    var diff = rowToCol - colToRow;
-                    if (diff>0)
+                    var diff = Math.Abs(rowToCol - colToRow);
+                    if (diff != 0)
                     {
                         matrix[r, c] = diff;
-                        matrix[c, r] = 0;
-                        continue;
-                    }
-                    if (diff < 0)
-                    {
-                        matrix[c, r] = -diff;
-                        matrix[r, c] = 0;
-                        continue;
+                        matrix[c, r] = diff;
                     }
                 }
             }
