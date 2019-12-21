@@ -6,60 +6,45 @@ namespace FordFulkerson.Model
 {
     public class Edge
     {
-        public Edge(int fromVer, int toVer, int capacity)
+        public Edge(int stratVertic, int endVertic, int capacity)
         {
-            FromVertic = fromVer;
-            ToVertic = toVer;
+            StartVertic = stratVertic;
+            EndVertic = endVertic;
             Capacity = capacity;
-            Direction = 0;
             Flow = 0;
         }
 
-        public int FromVertic { get; private set; }
-        public int ToVertic { get; private set; }
-        public int Capacity { get; private set; }
-        private int Direction { get; set; }
+        private readonly int StartVertic;
+        private readonly int EndVertic;
+        public int Capacity { get; set; }
 
-
-        public void SetFlow(int toVertic, int flow)
-        {
-            if (toVertic != FromVertic && toVertic != ToVertic)
-                throw new Exception($"This edge isn't connected with {toVertic} vertic");
-            Flow = flow;
-            if (toVertic == ToVertic)
-                Direction = 1;
-            else
-                Direction = -1;
-        }
 
         private int _flow;
         public int Flow
         {
             get
             {
-                return Direction * _flow;
+                return _flow;
             }
-            private set
+            set
             {
                 _flow = value;
-                _residualCapacity = Capacity - _flow;
+                _availableFlow = Capacity - _flow;
             }
         }
 
-        private int _residualCapacity;
-        public int ResidualCapcity
+        private int _availableFlow;
+        public int AvailableFlow
         {
             get
             {
-                return Direction * _residualCapacity;
+                return _availableFlow;
             }
             private set
             {
-                _residualCapacity = value;
-                _flow = Capacity - _residualCapacity;
+                _availableFlow = value;
+                _flow = Capacity - _availableFlow;
             }
         }
-
-
     }
 }

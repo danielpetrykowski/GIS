@@ -16,7 +16,7 @@ namespace FordFulkerson
 
                 while ((ln = file.ReadLine()) != null)
                 {
-                    Console.WriteLine(ln);
+                   // Console.WriteLine(ln);
                     lines.Add(ln);
                 }
                 file.Close();
