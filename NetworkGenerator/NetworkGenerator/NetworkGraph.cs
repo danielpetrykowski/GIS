@@ -39,17 +39,21 @@ namespace NetworkGenerator
                 if (degree > Vertical) degree = Vertical;
                 for (int d = 0; d < degree; d++)
                 {
-                    var col = random.Next(0, Vertical - 1);
+                    var col = random.Next(0, Vertical);
                     while (col == row)
                     {
-                        col = random.Next(0, Vertical - 1);
+                        col = random.Next(0, Vertical);
                     }
                     Matrix.SetValue(row, col, random.Next(minValue, maxValue));
                 }
             }
-            Matrix.RemoveDuplicateEdge();
-            Source = random.Next(1, Vertical);
-            Target = random.Next(1, Vertical);
+           // Matrix.RemoveDuplicateEdge();
+            Source = random.Next(1, Vertical) - 1;
+            Target = random.Next(1, Vertical) - 1;
+            while(Target == Source)
+            {
+                Target = random.Next(1, Vertical) - 1;
+            }
         }
 
         public string PrintNetwork()
@@ -68,7 +72,7 @@ namespace NetworkGenerator
                 }
                 stringBuilder.AppendLine();
             }
-            Console.WriteLine(stringBuilder.ToString());
+           // Console.WriteLine(stringBuilder.ToString());
             return stringBuilder.ToString();
         }
     }
