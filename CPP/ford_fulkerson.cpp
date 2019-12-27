@@ -1,29 +1,26 @@
 #include <iostream>
-#include <limits.h>
-#include <string.h>
-#include <queue>
-
-
-int loadGraph()
-{
-	std::cout << "Graph loaded" << std::endl;
-}
-
-bool bfs(int graph[], int s, int t, int parent[])
-{
-	return true;
-}
-
-int fordFulkerson(int graph, int s, int t)
-{
-	return 5;
-}
+#include "flowGraph.h"
+#include <fstream>
+#include <sstream>
+#include <string>
 
 int main()
 {
-	loadGraph();
+	std::ifstream infile("graph.txt");
+	std::string line;
+	std::vector<std::string> lines;
+	while (std::getline(infile, line)) {
+		lines.push_back(line);
+	}
 
-	std::cout << "The maximum possible flow is " << fordFulkerson(5, 0, 5) << std::endl;
+	if (lines.size() == 0) {
+		std::cout << "No file given" << std::endl;
+		return 0;
+	}
+
+	FlowGraph flowGraph = FlowGraph(lines);
+	int maxFlow = flowGraph.FordFulkerson();
+	std::cout << "Maksymalny przeplyw w grafie wynosi: " << maxFlow << std::endl;
 
 	return 0;
 }
