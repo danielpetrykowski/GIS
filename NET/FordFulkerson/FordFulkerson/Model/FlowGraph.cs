@@ -40,6 +40,7 @@ namespace FordFulkerson.Model
                     {
                         var updateCapacityEdge = Edges[new Tuple<int, int>(i, j)];
                         updateCapacityEdge.Capacity = capacities[j];
+                        updateCapacityEdge.Flow = 0;
                         continue;
                     }
 
