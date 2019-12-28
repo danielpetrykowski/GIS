@@ -4,6 +4,7 @@
 #include <boost/algorithm/string.hpp>
 #include <queue>
 #include <iostream>
+#include <chrono>
 
 FlowGraph::FlowGraph(std::vector<std::string> lines)
 {
@@ -45,21 +46,15 @@ FlowGraph::FlowGraph(std::vector<std::string> lines)
 			(*_adjacencyMap)[j].push_back(i);
 			(*_edges).insert({std::make_pair(j,i), edge2});
 		}
-
 	}
-	// DEBUG
-	/*    for(auto const& element: (*_edges)) {
-		std::cout << element.first.first << "," << element.first.second << std::endl;
-		std::cout << "Start: " << element.second._startVertice << std::endl;
-		std::cout << "End: " << element.second._endVertice << std::endl;
-		std::cout << "Cap: " << element.second._capacity << std::endl;
-		std::cout << " " << std::endl;
-	}*/
 }
 
 int FlowGraph::FordFulkerson()
 {
 	int maxFlow = 0;
+	// start time measure
+	auto begin = std::chrono::high_resolution_clock::now();
+
 	auto extendedPath = FindExtendedPath();
 	while(!extendedPath.empty()) {
 		auto valueFlowToUpdate = GetExtendedFlow(extendedPath);
@@ -67,6 +62,10 @@ int FlowGraph::FordFulkerson()
 		maxFlow +=valueFlowToUpdate;
 		extendedPath = FindExtendedPath();
 	}
+
+	// end time measure
+	auto end = std::chrono::high_resolution_clock::now();
+	std::cout << (std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count())/1000 << "ms" << std::endl;
 
 	return maxFlow;
 }

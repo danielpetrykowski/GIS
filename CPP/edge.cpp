@@ -32,7 +32,6 @@ int Edge::getAvailableFlow()
 void Edge::setAvailableFlow(int value)
 {
 	_availableFlow = value;
-	// for sure?
 	_flow = _capacity - _availableFlow;
 }
 

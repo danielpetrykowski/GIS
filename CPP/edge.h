@@ -9,7 +9,6 @@ public:
 	Edge(int startVertice, int endVertice, int capacity);
 	~Edge();
 
-	// which is which?
 	int getFlow();
 	void setFlow(int flow);
 	int getAvailableFlow();
@@ -17,10 +16,10 @@ public:
 	int getCapacity();
 	void setCapacity(int value);
 
+private:
 	int _startVertice;
 	int _endVertice;
 	int _capacity;
-private:
 	int _flow;
 	int _availableFlow;
 
