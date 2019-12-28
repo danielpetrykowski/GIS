@@ -33,7 +33,6 @@ FlowGraph::FlowGraph(std::vector<std::string> lines)
 				continue;
 
 			if (_edges->count(std::make_pair(i,j)) > 0) {
-				// vulnerability?
 				_edges->at(std::make_pair(i,j)).setCapacity(capacities[j]);
 				continue;
 			}
@@ -46,7 +45,16 @@ FlowGraph::FlowGraph(std::vector<std::string> lines)
 			(*_adjacencyMap)[j].push_back(i);
 			(*_edges).insert({std::make_pair(j,i), edge2});
 		}
+
 	}
+	// DEBUG
+	/*    for(auto const& element: (*_edges)) {
+		std::cout << element.first.first << "," << element.first.second << std::endl;
+		std::cout << "Start: " << element.second._startVertice << std::endl;
+		std::cout << "End: " << element.second._endVertice << std::endl;
+		std::cout << "Cap: " << element.second._capacity << std::endl;
+		std::cout << " " << std::endl;
+	}*/
 }
 
 int FlowGraph::FordFulkerson()
@@ -67,25 +75,24 @@ std::vector<int> FlowGraph::FindExtendedPath()
 {
 	std::queue<QueueElement> verticesToVisit = std::queue<QueueElement>();
 	std::vector<bool> visitedVertices(_verticesNum);
-
 	std::vector<int> verticePath{_source};
 	verticesToVisit.push(QueueElement(_source, verticePath));
 	visitedVertices[_source] = true;
 	while(verticesToVisit.size() > 0) {
 		QueueElement queueElement = verticesToVisit.front();
-		// potencjalnie do sprawdzenia czy nie psuje nic pop
 		verticesToVisit.pop();
-		for(auto it = _adjacencyMap->begin(); it != _adjacencyMap->end(); ++it) {
-			if (visitedVertices[it->first] || (*_edges).find(std::make_pair(queueElement.getVerticeId(), it->first))->second.getAvailableFlow() == 0)
+		for(auto it = (*_adjacencyMap)[queueElement.getVerticeId()].begin(); it != (*_adjacencyMap)[queueElement.getVerticeId()].end(); ++it) {
+			if (visitedVertices[*it] || (*_edges).find(std::make_pair(queueElement.getVerticeId(), *it))->second.getAvailableFlow() == 0)
 				continue;
 			auto path = queueElement.getVerticePath();
-			path.push_back(it->first);
+			path.push_back(*it);
 
-			if (it->first == _sink)
+			if (*it == _sink) {
 				return path;
+			}
 
-			verticesToVisit.push(QueueElement(it->first, path));
-			visitedVertices[it->first] = true;
+			verticesToVisit.push(QueueElement(*it, path));
+			visitedVertices[*it] = true;
 		}
 	}
 

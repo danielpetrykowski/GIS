@@ -17,10 +17,10 @@ public:
 	int getCapacity();
 	void setCapacity(int value);
 
-private:
 	int _startVertice;
 	int _endVertice;
 	int _capacity;
+private:
 	int _flow;
 	int _availableFlow;
 

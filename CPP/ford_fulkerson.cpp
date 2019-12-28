@@ -6,7 +6,7 @@
 
 int main()
 {
-	std::ifstream infile("graph.txt");
+	std::ifstream infile("graph2.txt");
 	std::string line;
 	std::vector<std::string> lines;
 	while (std::getline(infile, line)) {
