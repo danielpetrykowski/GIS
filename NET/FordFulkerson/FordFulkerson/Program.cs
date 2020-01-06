@@ -32,6 +32,7 @@ namespace FordFulkerson
                 var elapsedTime = (decimal)ts.Ticks / frequency;
 
                 Console.WriteLine($"{maxFlow}; " + elapsedTime.ToString("F10"));
+                stopWatch.Restart();
             }
             
             Console.ReadLine();
