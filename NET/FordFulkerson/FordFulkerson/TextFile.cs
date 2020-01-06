@@ -7,10 +7,10 @@ namespace FordFulkerson
 {
     class TextFile
     {
-        public static List<string> ReadFileLines()
+        public static List<string> ReadFileLines(string path)
         {
             List<string> lines = new List<string>();
-            using (StreamReader file = new StreamReader("graph.txt"))
+            using (StreamReader file = new StreamReader(path))
             {
                 string ln;
 
