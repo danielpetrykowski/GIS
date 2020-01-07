@@ -30,8 +30,7 @@ int main()
 		}
 
 		FlowGraph flowGraph = FlowGraph(lines);
-		int maxFlow = flowGraph.FordFulkerson();
-		std::cout << "Maksymalny przeplyw w grafie wynosi: " << maxFlow << std::endl;
+		flowGraph.FordFulkerson();
 	}
 
 	return 0;

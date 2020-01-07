@@ -65,7 +65,7 @@ int FlowGraph::FordFulkerson()
 
 	// end time measure
 	auto end = std::chrono::high_resolution_clock::now();
-	std::cout << (std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count())/1000 << "ms" << std::endl;
+	std::cout << maxFlow << "; " << (std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count()) << "ns" << std::endl;
 
 	return maxFlow;
 }
