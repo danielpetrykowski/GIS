@@ -3,26 +3,30 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include <experimental/filesystem>
+#include <sys/types.h>
+#include <dirent.h>
 
-namespace fs = std::experimental::filesystem;
 
 int main()
 {
 #ifdef _WIN32
 	// Tu sciezka windows way
-	std::string path = "";
+	std::string path = "./test";
 #else
 	std::string path = "./graphs";
 #endif
-	for (const auto& entry : fs::directory_iterator(path)) {
+    DIR* dirp = opendir(path.c_str());
+    struct dirent * dp;
+	while ((dp = readdir(dirp)) != NULL) {
 		//std::cout << entry.path() << std::endl;
-		std::ifstream infile(entry.path());
+		std::string fileName = dp->d_name;
+		if(fileName == "." || fileName== "..") continue;
+		std::ifstream infile(path + "/" + fileName);
 		std::string line;
 		std::vector<std::string> lines;
 		while (std::getline(infile, line)) {
 			lines.push_back(line);
-		}
+		}		
 
 		if (lines.size() == 0) {
 			std::cout << "No file given" << std::endl;
