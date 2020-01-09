@@ -8,13 +8,13 @@ namespace FordFulkerson
 {
     class Program
     {
-        private const string TEST_EXAMPLES_DIRECTOR = "test";
+        private const string TEST_EXAMPLES_DIRECTOR = "graphs";
         private static long frequency = Stopwatch.Frequency;
 
         static void Main(string[] args)
         {
             Stopwatch stopWatch = new Stopwatch();
-            var exampleNetworkPath = Directory.GetCurrentDirectory() + "\\" + TEST_EXAMPLES_DIRECTOR;
+            var exampleNetworkPath = Directory.GetCurrentDirectory() + "/" + TEST_EXAMPLES_DIRECTOR;
             var filesPath = Directory.GetFiles(exampleNetworkPath);
 
             foreach(string filePath in filesPath)

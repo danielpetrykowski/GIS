@@ -7,7 +7,7 @@ Edge::Edge(int startVertice, int endVertice, int capacity)
 	_endVertice = endVertice;
 	_capacity = capacity;
 	_flow = 0;
-	_availableFlow = -1;
+	_availableFlow = capacity;
 }
 
 Edge::~Edge()
