@@ -35,6 +35,7 @@ FlowGraph::FlowGraph(std::vector<std::string> lines)
 
 			if (_edges->count(std::make_pair(i,j)) > 0) {
 				_edges->at(std::make_pair(i,j)).setCapacity(capacities[j]);
+				_edges->at(std::make_pair(i,j)).setFlow(0);
 				continue;
 			}
 
