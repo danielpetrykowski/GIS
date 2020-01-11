@@ -5,8 +5,8 @@ namespace NetworkGenerator
 {
     class Program
     {
-        private const int VERTICAL = 5000;
-        private const int AVG_VERTICAL_DEGREE = 4000;
+        private const int VERTICAL = 2000;
+        private const int AVG_VERTICAL_DEGREE = 2000;
         private const int MAX_VALUE = 100;
         private const int MIN_VALUE = 0;
 
